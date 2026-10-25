@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Planner - SmartBudget</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo">🌿 SmartBudget</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="budget.html">Budget Planner</a></li>
+        <li><a href="savings.html" class="active">Savings Planner</a></li>
+      </ul>
+      <select id="currency" class="currency-select" aria-label="Currency">
+        <option value="MAD">MAD</option>
+        <option value="EUR">€ EUR</option>
+        <option value="USD">$ USD</option>
+        <option value="GBP">£ GBP</option>
+        <option value="CAD">$ CAD</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h1>Savings Planner</h1>
+      <p>Tell us your goal and we'll work out how much to save each month.</p>
+    </div>
+
+    <div class="planner">
+
+      <!-- Colonne gauche : le formulaire -->
+      <form class="card form-card" id="savings-form">
+        <h2>Your goal</h2>
+
+        <div class="form-group">
+          <label for="goal-name">What do you want to buy or achieve?</label>
+          <input type="text" id="goal-name" placeholder="e.g. A new laptop">
+        </div>
+
+        <div class="form-group">
+          <label for="goal-amount">Amount needed</label>
+          <input type="number" id="goal-amount" min="0" placeholder="e.g. 1200">
+        </div>
+
+        <div class="form-group">
+          <label for="goal-saved">Already saved</label>
+          <input type="number" id="goal-saved" min="0" placeholder="e.g. 200">
+        </div>
+
+        <div class="form-group">
+          <label for="goal-months">Time frame (in months)</label>
+          <input type="number" id="goal-months" min="1" placeholder="e.g. 8">
+        </div>
+           <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <!-- Colonne droite : le résultat (rempli par JavaScript plus tard) -->
+      <aside class="card result-card">
+        <h2 id="goal-title">Your plan</h2>
+
+        <div class="big-result">
+          <div class="label">You need to save each month</div>
+          <div class="amount" id="monthly-saving">0</div>
+        </div>
+        <div class="message" id="savings-message" hidden></div>
+        <div class="result-line">
+          <span>Still to save</span>
+          <strong id="remaining-amount">0</strong>
+        </div>
+        <div class="result-line">
+          <span>Already saved</span>
+          <strong id="saved-amount">0</strong>
+        </div>
+
+        <hr class="divider">
+
+        <div class="progress-item">
+          <div class="progress-label"><span>Progress</span><span id="goal-pct">0%</span></div>
+          <div class="bar"><div class="bar-fill" id="goal-bar"></div></div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>SmartBudget · Your data stays in your browser.</p>
+    </div>
+  </footer>
+  <script src="currency.js"></script>
+   <script src="storage.js"></script>
+<script src="savings.js"></script>
+</body>
+</html>

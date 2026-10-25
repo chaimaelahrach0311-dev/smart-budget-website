@@ -1,0 +1,455 @@
+/* =========================================================
+   SmartBudget - feuille de style commune
+   Palette : vert sauge, blanc cassé, beige
+   ========================================================= */
+
+/* 1. Variables : on définit les couleurs une seule fois
+      et on les réutilise partout avec var(--nom) */
+:root {
+  --sage: #8a9a7b;
+  --sage-dark: #5f7152;
+  --sage-light: #dfe6d6;
+  --offwhite: #f7f4ec;
+  --beige: #e8dfcb;
+  --text: #2f3a2b;
+  --text-soft: #6b7664;
+  --white: #ffffff;
+  --radius: 16px;
+  --shadow: 0 6px 20px rgba(47, 58, 43, 0.08);
+}
+
+/* 2. Réglages de base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--offwhite);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 3. Conteneur centré, réutilisé dans toutes les pages */
+.container {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+}
+
+/* 4. En-tête et navigation */
+.site-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--beige);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--sage-dark);
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover {
+  background: var(--sage-light);
+  color: var(--text);
+}
+
+/* La page courante est mise en évidence avec la classe "active" */
+.nav-links a.active {
+  background: var(--sage);
+  color: var(--white);
+}
+
+/* 5. Boutons */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  background: var(--sage-dark);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+
+.btn:hover {
+  background: var(--sage);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--beige);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: var(--sage-light);
+}
+
+/* 6. Page d'accueil : section "hero" */
+.hero {
+  text-align: center;
+  padding: 90px 0 70px;
+  background: linear-gradient(180deg, var(--sage-light), var(--offwhite));
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  color: var(--text-soft);
+  font-size: 1.1rem;
+}
+
+/* 7. Cartes de fonctionnalités */
+.section {
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 36px;
+  font-size: 1.8rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.card h3 {
+  margin-bottom: 8px;
+  color: var(--sage-dark);
+}
+
+.card p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.card .icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+/* 8. Pages Planner : titre + deux colonnes (formulaire / résultats) */
+.page-head {
+  padding: 48px 0 24px;
+}
+
+.page-head h1 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.page-head p {
+  color: var(--text-soft);
+}
+
+.planner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  padding-bottom: 60px;
+  align-items: start;
+}
+
+/* Sur petit écran, les deux colonnes passent l'une sous l'autre */
+@media (max-width: 760px) {
+  .planner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 9. Formulaires */
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--beige);
+  border-radius: 10px;
+  background: var(--offwhite);
+  font-size: 1rem;
+  color: var(--text);
+  font-family: inherit;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--sage);
+  background: var(--white);
+}
+
+.form-card h2,
+.result-card h2 {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px dashed var(--beige);
+  margin: 24px 0;
+}
+
+/* 10. Résumé des résultats */
+.result-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--beige);
+}
+
+.result-line:last-of-type {
+  border-bottom: none;
+}
+
+.result-line strong {
+  color: var(--sage-dark);
+}
+
+.big-result {
+  background: var(--sage-light);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.big-result .label {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+.big-result .amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--sage-dark);
+}
+
+/* 11. Barres de progression
+      .bar = le fond, .bar-fill = la partie remplie.
+      Plus tard, JavaScript changera la largeur (width) de .bar-fill. */
+.progress-item {
+  margin-bottom: 14px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.bar {
+  height: 12px;
+  background: var(--beige);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--sage);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* 12. Pied de page */
+.site-footer {
+  text-align: center;
+  padding: 28px 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--beige);
+}
+
+/* =========================================================
+   13. Mobile improvements
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  /* Menu: logo on top, links centered below and sharing the width */
+  .nav {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Hero: less empty space, full-width button */
+  .hero {
+    padding: 56px 0 44px;
+  }
+
+  .hero .btn {
+    width: 100%;
+  }
+
+  /* Less space between sections */
+  .section {
+    padding: 40px 0;
+  }
+
+  .page-head {
+    padding: 32px 0 16px;
+  }
+
+  .page-head h1 {
+    font-size: 1.6rem;
+  }
+
+  /* Cards: smaller inner padding to leave more room for content */
+  .card {
+    padding: 20px;
+  }
+
+  /* Smaller big numbers so they never overflow */
+  .big-result .amount {
+    font-size: 1.6rem;
+  }
+
+  /* Inputs: 16px stops iPhones from zooming in when you tap a field */
+  input[type="number"],
+  input[type="text"],
+  input[type="date"] {
+    font-size: 16px;
+  }
+
+  /* Results lines: allow wrapping if a label is long */
+  .result-line {
+    gap: 12px;
+  }
+}
+
+/* Prevent any accidental sideways scrolling */
+body {
+  overflow-x: hidden;
+}
+
+/* 14. Currency selector */
+.currency-select {
+  padding: 8px 12px;
+  border: 1.5px solid var(--beige);
+  border-radius: 999px;
+  background: var(--offwhite);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.currency-select:focus {
+  outline: none;
+  border-color: var(--sage);
+}
+
+/* 15. Form actions (Reset button) */
+.form-actions {
+  margin-top: 8px;
+}
+
+/* 16. Messages (warnings, tips, success) */
+.message {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  border-left: 4px solid;
+}
+
+/* Needed so the "hidden" attribute still works with our styles */
+.message[hidden] {
+  display: none;
+}
+
+.message-warning {
+  background: #f8e6e2;
+  border-color: #b5483a;
+  color: #7a2f24;
+}
+
+.message-success {
+  background: var(--sage-light);
+  border-color: var(--sage-dark);
+  color: var(--text);
+}
+
+.message-info {
+  background: var(--beige);
+  border-color: var(--sage);
+  color: var(--text);
+}

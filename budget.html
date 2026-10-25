@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Planner - SmartBudget</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="logo">🌿 SmartBudget</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="budget.html" class="active">Budget Planner</a></li>
+        <li><a href="savings.html">Savings Planner</a></li>
+      </ul>
+      <select id="currency" class="currency-select" aria-label="Currency">
+        <option value="MAD">MAD</option>
+        <option value="EUR">€ EUR</option>
+        <option value="USD">$ USD</option>
+        <option value="GBP">£ GBP</option>
+        <option value="CAD">$ CAD</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h1>Budget Planner</h1>
+      <p>Enter your monthly income, then decide how to spend it.</p>
+    </div>
+
+    <div class="planner">
+
+      <!-- Colonne gauche : le formulaire -->
+      <form class="card form-card" id="budget-form">
+        <h2>Your monthly budget</h2>
+
+        <div class="form-group">
+          <label for="income">Monthly income</label>
+          <input type="number" id="income" min="0" placeholder="e.g. 3000">
+        </div>
+
+        <hr class="divider">
+
+        <div class="form-group">
+          <label for="rent">Rent</label>
+          <input type="number" id="rent" class="expense" min="0" placeholder="0">
+        </div>
+
+        <div class="form-group">
+          <label for="transport">Transport</label>
+          <input type="number" id="transport" class="expense" min="0" placeholder="0">
+        </div>
+
+        <div class="form-group">
+          <label for="shopping">Shopping</label>
+          <input type="number" id="shopping" class="expense" min="0" placeholder="0">
+        </div>
+
+        <div class="form-group">
+          <label for="bills">Bills</label>
+          <input type="number" id="bills" class="expense" min="0" placeholder="0">
+        </div>
+
+        <div class="form-group">
+          <label for="other">Other expenses</label>
+          <input type="number" id="other" class="expense" min="0" placeholder="0">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="reset-btn">Reset</button>
+        </div>
+      </form>
+
+      <!-- Colonne droite : le résumé (les valeurs seront remplies par JavaScript) -->
+      <aside class="card result-card">
+        <h2>Summary</h2>
+
+        <div class="result-line">
+          <span>Monthly income</span>
+          <strong id="summary-income">0</strong>
+        </div>
+        <div class="result-line">
+          <span>Total allocated</span>
+          <strong id="summary-total">0</strong>
+        </div>
+
+        <div class="big-result">
+          <div class="label">Remaining</div>
+          <div class="amount" id="summary-remaining">0</div>
+        </div>
+
+        <div class="message" id="budget-message" hidden></div>
+
+        <h2>Where your money goes</h2>
+
+        <div class="progress-item">
+          <div class="progress-label"><span>Rent</span><span id="pct-rent">0%</span></div>
+          <div class="bar"><div class="bar-fill" id="bar-rent"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Transport</span><span id="pct-transport">0%</span></div>
+          <div class="bar"><div class="bar-fill" id="bar-transport"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Shopping</span><span id="pct-shopping">0%</span></div>
+          <div class="bar"><div class="bar-fill" id="bar-shopping"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Bills</span><span id="pct-bills">0%</span></div>
+          <div class="bar"><div class="bar-fill" id="bar-bills"></div></div>
+        </div>
+        <div class="progress-item">
+          <div class="progress-label"><span>Other</span><span id="pct-other">0%</span></div>
+          <div class="bar"><div class="bar-fill" id="bar-other"></div></div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>SmartBudget · Your data stays in your browser.</p>
+    </div>
+  </footer>
+  <script src="currency.js"></script>
+   <script src="storage.js"></script>
+<script src="budget.js"></script>
+</body>
+</html>
